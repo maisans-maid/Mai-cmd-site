@@ -280,7 +280,6 @@ input:checked + .slider:before {
   padding: 10px;
   border-radius: 10px;
   background-color: #272928;
-  max-width: 500px;
 }
 
 .command-details p{
