@@ -33,11 +33,13 @@ $(document).ready(function(){
     $(`.${attr}`).show();
   });
 
-  $('.checkbox-expand').click(function(){
+    $('.checkbox-expand').click(function(){
     if ($('.checkbox-expand').is(':checked')){
       $('.command-details').slideDown(300);
+      $('.clock-icon').show();
     } else {
       $('.command-details').slideUp(300);
+      $('.clock-icon').hide();
     }
   })
 
