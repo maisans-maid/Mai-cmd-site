@@ -95,17 +95,6 @@ $(document).ready(function(){
       }).appendTo('.items');
     }
   })
-
-
-// REmove command category if certain width is reached
- $(window).resize(function() {
-   if ($(this).width() < 700) {
-     $('.content-commands-column-2-left').hide('slow');
-   } else {
-     $('.content-commands-column-2-left').show('slow');
-   }
- });
-
 });
 
 $('.market-options').hide();
