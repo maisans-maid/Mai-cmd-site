@@ -225,6 +225,7 @@ input:checked + .slider:before {
   display: inline-block;
   overflow: hidden;
   width: 100%;
+  min-width: 250px;
   background-color: #272928;
   margin-right: 5px;
   padding: 5px;
