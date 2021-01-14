@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var $commands = $('#commands-list');
 
-    $.getJSON('https://raw.githubusercontent.com/maisans-maid/Mai/dev/assets/json/command-database.json', function(data, status){
+    $.getJSON('https://raw.githubusercontent.com/maisans-maid/Mai/master/assets/json/command-database.json', function(data, status){
 
       $.each(data, function(_, command){
 
