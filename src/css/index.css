@@ -76,6 +76,12 @@ code {
   box-shadow: 10px 5px 5px black;
 }
 
+@media (max-width: 584px){
+  .content-commands-column-2-left {
+    flex-grow: 1;
+  }
+}
+
 .content-commands-column-2-left h1{
   font-family: 'Poppins';
   font-size: 20px;
@@ -119,6 +125,7 @@ code {
   width: 100%;
   height: 100%;
   pointer-events: all;
+  cursor: pointer;
 }
 
 /* The slider */
@@ -292,10 +299,99 @@ input:checked + .slider:before {
   line-height: 24px;
 }
 
+.command-details code{
+  white-space: nowrap;
+}
+
 .command-details p a{
   color: white;
 }
 
 .command-details p a:hover{
   color: hotpink;
+}
+
+.commands-search {
+  margin: 0 20px;
+  max-width: 100%;
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+}
+
+.commands-search input{
+  height: 100%;
+  width: 100%;
+  color: dimgray;
+  padding-top: 20px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.commands-search label{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid hotpink;
+}
+
+.commands-search label::after{
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid hotpink;
+  transform: translateX(-100%);
+}
+
+.content-search {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.5s ease;
+}
+
+.commands-search input:focus + .search-label .content-search,
+.commands-search input:valid + .search-label .content-search{
+  transform: translateY(-20px);
+  color: dimgray;
+}
+
+.commands-search input:focus + .search-label::after,
+.commands-search input:valid + .search-label::after {
+  transform: translateX(0%);
+}
+
+.commands-still-loading {
+  margin: auto;
+  margin-top: 50px;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid hotpink; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.commands-loading-failed{
+  margin: auto;
+  margin-top: 50px;
+  color: dimgray;
+  display: none;
+  text-align: center;
+}
+
+.commands-loading-failed h1{
+  font-size: 20px;
 }

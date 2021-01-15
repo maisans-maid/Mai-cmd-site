@@ -1,31 +1,9 @@
 $(document).ready(function(){
-  $(".nav-btn").click(function(){
-
-    var attr = $(this).attr('data-li');
-
-    $('.nav-btn').removeClass('active');
-    $(this).addClass('active');
-
-    $('.item').hide();
-
-    if (attr === 'all'){
-      $('.item').show();
-    } else if (attr === 'bg'){
-      $('.background').show();
-    } else if (attr === 'wr'){
-      $('.wreath').show();
-    } else if (attr === 'pt'){
-      $('.pattern').show();
-    } else if (attr === 'em'){
-      $('.emblem').show();
-    } else if (attr === 'ht'){
-      $('.hat').show();
-    };
-  });
-
   $('.col-2-btn').click(function(){
     $('.col-2-btn').removeClass('active');
     $(this).addClass('active');
+
+    $(".search-box").val('');
 
     const attr = $(this).attr('data-li');
 
@@ -50,53 +28,22 @@ $(document).ready(function(){
     $(`.${attr}-1`).slideToggle(300);
   });
 
-  $('.gear-icon').click(function(){
-    $('.market-options').toggle(300);
+  $(".search-box").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+
+    if (!value){
+      const attr = $('.col-2-btn.active').attr('data-li');
+      $('.command').hide();
+      $(`.${attr}`).show();
+      return;
+    };
+
+    $(".commands div").filter(function(_,el) {
+      if (!$(el).hasClass('command')){
+         return;
+      };
+
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
   });
-
-  $('.market-options').click(function(){
-    $('.market-options').hide(300);
-
-    const attr = $(this).attr('sort');
-
-    if (attr === 'id'){
-      $('.item').sort(function(a,b){
-        var contentA =parseInt( $(a).attr('sort-id'));
-        var contentB =parseInt( $(b).attr('sort-id'));
-        return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-      }).appendTo('.items');
-    } else if (attr === 'id-dec'){
-      $('.item').sort(function(a,b){
-        var contentA =parseInt( $(a).attr('sort-id'));
-        var contentB =parseInt( $(b).attr('sort-id'));
-        return (contentA > contentB) ? -1 : (contentA < contentB) ? 1 : 0;
-      }).appendTo('.items');
-    } else if (attr === 'price'){
-      $('.item').sort(function(a,b){
-        var contentA =parseInt( $(a).attr('sort-price'));
-        var contentB =parseInt( $(b).attr('sort-price'));
-        return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-      }).appendTo('.items');
-    } else if (attr === 'price-dec'){
-      $('.item').sort(function(a,b){
-        var contentA =parseInt( $(a).attr('sort-price'));
-        var contentB =parseInt( $(b).attr('sort-price'));
-        return (contentA > contentB) ? -1 : (contentA < contentB) ? 1 : 0;
-      }).appendTo('.items');
-    } else if (attr === 'name'){
-      $('.item').sort(function(a,b){
-        var contentA = $(a).attr('sort-name');
-        var contentB = $(b).attr('sort-name');
-        return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-      }).appendTo('.items');
-    } else if (attr === 'name-dec'){
-      $('.item').sort(function(a,b){
-        var contentA = $(a).attr('sort-name');
-        var contentB = $(b).attr('sort-name');
-        return (contentA > contentB) ? -1 : (contentA < contentB) ? 1 : 0;
-      }).appendTo('.items');
-    }
-  })
 });
-
-$('.market-options').hide();

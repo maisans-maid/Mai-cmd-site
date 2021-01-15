@@ -40,22 +40,30 @@ $(document).ready(function(){
                 return `<span class="code-style-inline-red" style="background-color:purple">${x.split('_').map(p =>
                   p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()
                 ).join(' ')}</span>`
-              }).join(' ') || ' <span class="code-style-inline-red" style="background-color:green">Everyone</span> '}
+              }).join(' ') || (command.adminOnly || command.ownerOnly ? '' : ' <span class="code-style-inline-red" style="background-color:green">Everyone</span> ')}
               ${command.nsfw ? ' <span class="code-style-inline-red">NSFW</span>' : ''}
               ${command.rankcommand ? ' <span class="code-style-inline-red">Rank</span>' : ''}
               <br><br>
-              Usage/Example <br>
+              Parameters: <br>
+              ${command.parameters?.map(x => '<code>' + x + '</code>').join(' ') || '<code> None </code>'}
+              <br><br>
+              Example/s:<br>
+              ${command.examples.map(x => '<code> m!' + x + '</code>').join(' ')}
             </p>
            </div>
           </div>
         `)
       });
 
-
+      $('.commands-still-loading').hide();
       $('.command').hide();
       $('.action').show();
       $('.command-details').hide();
       $('.clock-icon').hide()
+    })
+    .catch(() => {
+      $('.commands-still-loading').hide();
+      $('.commands-loading-failed').show();
     });
   });
 });

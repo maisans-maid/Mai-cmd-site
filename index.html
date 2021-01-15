@@ -81,7 +81,18 @@
               </ul>
             </div>
             <div class="content-commands-column-2-right">
-              <div class="commands" id="commands-list"> </div>
+              <div class="commands-search">
+                <input class="search-box" type="text" name="command" required="true" formnovalidate>
+                <label for="search" class="search-label">
+                  <span class="content-search"> Search </span>
+                </label>
+              </div>
+              <div class="commands" id="commands-list">
+                <div class="commands-still-loading"></div>
+                <div class="commands-loading-failed">
+                  <h1>Error: Unable to Load Commands</h1>
+                </div>
+              </div>
             </div>
           </div>
         </div>
